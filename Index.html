@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -297,24 +298,23 @@
             border-radius: 8px;
             transition: background 0.2s;
             color: var(--green-exact);
+            /* Use SVG icon via background? We'll replace content with inline SVG */
         }
         .dropdown-trigger:hover {
             background: #1f3a1f;
         }
-        .equal-sign {
-            font-size: 1.8rem;
-            line-height: 1;
-            font-weight: 400;
-            color: var(--green-exact);
-            margin-bottom: -6px;
+        /* New style: the button contains the Lucide SVG inline */
+        .dropdown-trigger svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--green-exact);
+            stroke-width: 2;
+            fill: none;
         }
-        .line-below {
-            width: 20px;
-            height: 2px;
-            background-color: var(--green-exact);
-            border-radius: 2px;
-            margin-top: 2px;
+        .dropdown-trigger:hover svg {
+            stroke: #a5d6a5;
         }
+
         .dropdown-menu {
             position: absolute;
             top: 48px;
@@ -469,9 +469,13 @@
 
         <div class="right-actions">
             <div class="dropdown-btn-container" id="dropdownContainer">
+                <!-- dropdown trigger with SVG (lucide menu) replacing previous = and line -->
                 <button class="dropdown-trigger" id="dropdownToggle">
-                    <span class="equal-sign">=</span>
-                    <span class="line-below"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
                 </button>
                 <div class="dropdown-menu" id="dropdownMenu">
                     <a href="#">Home</a>
