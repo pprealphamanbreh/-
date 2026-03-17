@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=yes">
+    <!-- Title updated to use the exact green color RGB(52, 171, 47) -->
+    <title>Tiger X · RGB(52, 171, 47)</title>
+    <!-- Google Fonts: Inter & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* black background */
+            --bg-black: #000000;
+            /* exact green from Color3.fromRGB(52,171,47) */
+            --green-exact: rgb(52, 171, 47);
+            --green-exact-dark: rgb(38, 128, 35);
+            --green-exact-dim: rgba(52, 171, 47, 0.15);
+            
+            --card-bg: #0c120c;
+            --border-green: #1e4a1e;
+            
+            --radius-card: 1.2rem;
+            --radius-btn: 0.9rem;
+            --shadow-green: 0 12px 30px -8px rgba(52, 171, 47, 0.4);
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-black);
+            color: var(--green-exact);
+            line-height: 1.5;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.2rem;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 30% 30%, #1a3a1a, #000000 80%);
+        }
+
+        .bg-dark-card { background-color: var(--card-bg); }
+
+        p, h1, h2, h3, h4, span, div, li, a, button {
+            color: inherit;
+        }
+
+        i, .fas, .far, .fab {
+            color: var(--green-exact);
+        }
+
+        .btn-primary {
+            background: var(--green-exact);
+            color: #0a2a0a;
+            font-weight: 800;
+            padding: 0.75rem 2rem;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            font-size: 1rem;
+            text-decoration: none;
+            border: 1px solid var(--green-exact-dark);
+        }
+        .btn-primary i {
+            color: #0a2a0a;
+        }
+        .btn-primary:hover {
+            background: var(--green-exact-dark);
+            box-shadow: var(--shadow-green);
+            transform: scale(1.02);
+            color: black;
+        }
+
+        .btn-buy {
+            background: var(--green-exact);
+            color: #0a2a0a;
+            font-weight: 800;
+            padding: 0.6rem 2rem;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            font-size: 1rem;
+            text-decoration: none;
+            border: 1px solid var(--green-exact-dark);
+            margin-top: 0.8rem;
+        }
+        .btn-buy i {
+            color: #0a2a0a;
+        }
+        .btn-buy:hover {
+            background: var(--green-exact-dark);
+            box-shadow: var(--shadow-green);
+            transform: scale(1.02);
+            color: black;
+        }
+
+        /* Social Circles */
+        .social-section {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .social-circles {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid var(--green-exact);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--green-exact);
+            font-size: 1.8rem;
+        }
+        
+        .social-circle:hover {
+            background: var(--green-exact);
+            color: black;
+            transform: scale(1.1);
+            box-shadow: var(--shadow-green);
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-card);
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 0 0 1px var(--border-green);
+            transition: 0.2s;
+            border: 1px solid #1e4a1e;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: var(--shadow-green);
+            border-color: var(--green-exact);
+        }
+        .feature-card .icon-bg {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #1a2a1a !important;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-exact);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--green-exact);
+        }
+        .feature-card .icon-bg i {
+            color: var(--green-exact);
+        }
+        .feature-card h3 {
+            color: var(--green-exact);
+            font-weight: 700;
+        }
+        .feature-card p {
+            color: var(--green-exact);
+            opacity: 0.9;
+        }
+
+        .game-badge {
+            background: #0c180c;
+            border-radius: 1.2rem;
+            padding: 1.5rem 0.5rem;
+            text-align: center;
+            transition: 0.2s;
+            border: 1px solid #1e541e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .game-badge .icon-bg {
+            margin: 0 auto 1rem;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+            background: #1a2e1a !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-exact);
+            font-size: 1.8rem;
+            border: 1px solid #2e8b57;
+        }
+        .game-badge .icon-bg i {
+            color: var(--green-exact);
+        }
+        .game-badge h4 {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 0.2rem;
+            color: var(--green-exact);
+        }
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #1b4c1b;
+            z-index: 50;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 1.2rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-image {
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            object-fit: cover;
+        }
+
+        .logo-text h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--green-exact), #8bc34a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        .logo-text p {
+            font-size: 0.65rem;
+            color: var(--green-exact);
+            opacity: 0.9;
+        }
+
+        .right-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .dropdown-btn-container {
+            position: relative;
+        }
+        .dropdown-trigger {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            transition: background 0.2s;
+            color: var(--green-exact);
+        }
+        .dropdown-trigger:hover {
+            background: #1f3a1f;
+        }
+        .equal-sign {
+            font-size: 1.8rem;
+            line-height: 1;
+            font-weight: 400;
+            color: var(--green-exact);
+            margin-bottom: -6px;
+        }
+        .line-below {
+            width: 20px;
+            height: 2px;
+            background-color: var(--green-exact);
+            border-radius: 2px;
+            margin-top: 2px;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 48px;
+            right: 0;
+            background: #0a1a0a;
+            border-radius: 1rem;
+            box-shadow: 0 12px 30px -8px rgba(52, 171, 47, 0.5);
+            padding: 0.75rem 0;
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-6px);
+            transition: all 0.2s ease;
+            border: 1px solid #1f541f;
+            z-index: 100;
+        }
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--green-exact);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .dropdown-menu a:hover {
+            background: #1e3a1e;
+            color: #8bc34a;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--green-exact);
+        }
+
+        main {
+            margin-top: 5rem;
+        }
+
+        .support-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            border: 1px solid var(--border-green);
+            border-radius: var(--radius-card);
+            background: var(--card-bg);
+            text-align: center;
+        }
+
+        .support-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--green-exact);
+            margin-bottom: 0.5rem;
+        }
+
+        .support-subtext {
+            font-size: 1rem;
+            color: var(--green-exact);
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #030b03;
+            color: var(--green-exact);
+            padding: 3.5rem 0 2.5rem;
+            border-top: 1px solid #1f4d1f;
+        }
+
+        .footer-logo-image {
+            width: 38px;
+            height: 38px;
+            border-radius: 999px;
+            object-fit: cover;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        @media (max-width: 900px) {
+            .feature-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 580px) {
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 720px) {
+            .game-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .game-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        hr { border: none; border-top: 1px solid #1f541f; margin: 2rem 0; }
+
+        .scroll-down-btn {
+            background: transparent;
+            border: 2px solid var(--green-exact);
+            color: var(--green-exact);
+            padding: 0.75rem 2.2rem;
+            border-radius: 3rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: 0.2s;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .scroll-down-btn i {
+            color: var(--green-exact);
+            font-size: 1.2rem;
+        }
+        .scroll-down-btn:hover {
+            background: var(--green-exact);
+            color: black;
+            border-color: var(--green-exact);
+        }
+        .scroll-down-btn:hover i {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo-area">
+            <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/-/refs/heads/main/Picsart_25-01-20_15-47-05-044.jpg" 
+                 alt="Tiger X Logo" 
+                 class="logo-image">
+            
+            <div class="logo-text">
+                <h1>Tiger X</h1>
+                <p>Universal Script Hub</p>
+            </div>
+        </div>
+
+        <div class="right-actions">
+            <div class="dropdown-btn-container" id="dropdownContainer">
+                <button class="dropdown-trigger" id="dropdownToggle">
+                    <span class="equal-sign">=</span>
+                    <span class="line-below"></span>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#">Home</a>
+                    <a href="https://tigerxhub.carrd.co/" target="_blank">Universal</a>
+                    <a href="https://tigerxscriptgames.carrd.co/" target="_blank">Games</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero-gradient" style="padding: 4rem 0 4rem 0;">
+        <div class="container">
+            <div style="max-width: 850px; margin: 0 auto; text-align: center;">
+                <span style="display: inline-block; background: #1d3b1d; color: var(--green-exact); padding: 0.3rem 1.2rem; border-radius: 999px; font-weight: 600; margin-bottom: 1.5rem;">
+                    <i class="fas fa-leaf"></i> Universal: 350+ Scripts
+                </span>
+                <h1 style="font-size: clamp(2.2rem, 8vw, 3.8rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; color: var(--green-exact);">
+                    The Ultimate Roblox Script Hub
+                </h1>
+                <p style="font-size: 1.2rem; color: var(--green-exact); opacity: 0.9; max-width: 650px; margin: 0 auto 2rem;">
+                    Access hundreds of premium scripts across your favorite Roblox games. Execute with confidence.
+                </p>
+                <button class="scroll-down-btn" onclick="document.getElementById('feature-section').scrollIntoView({behavior:'smooth'})">
+                    <i class="fas fa-arrow-down"></i> Scroll down
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="feature-section" style="padding: 4rem 0; background-color: #020902;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: var(--green-exact);">Why Tiger X?</h2>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card"><div class="icon-bg"><i class="fas fa-shield-alt"></i></div><h3>Universal Compatibility</h3><p>Works across all popular Roblox games with regular updates.</p></div>
+                <div class="feature-card"><div class="icon-bg"><i class="fas fa-bolt"></i></div><h3>Keyless</h3><p>Our Scripts are keyless.</p></div>
+                <div class="feature-card"><div class="icon-bg"><i class="fas fa-users"></i></div><h3>Community</h3><p>Join Tiger X Hub Server for scripts & libraries.</p></div>
+                <div class="feature-card"><div class="icon-bg"><i class="fas fa-mobile-alt"></i></div><h3>Mobile Optimized</h3><p>Touch-friendly interface and responsive design.</p></div>
+                <div class="feature-card"><div class="icon-bg"><i class="fas fa-code"></i></div><h3>Advanced Scripts</h3><p>Auto-farm, Troll, and competitive advantages.</p></div>
+                <div class="feature-card"><div class="icon-bg"><i class="fas fa-clock"></i></div><h3>Fast Updates</h3><p>including Fixed Bugs and New Features and more.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 4rem 0; background: #010401;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: var(--green-exact);">Supported Games</h2>
+                <p style="color: var(--green-exact); opacity: 0.9;">Tiger X supports hundreds of popular Roblox games with dedicated scripts.</p>
+            </div>
+            <div class="game-grid">
+                <div class="game-badge"><div class="icon-bg"><i class="fas fa-road"></i></div><h4>A Dusty Trip</h4></div>
+                <div class="game-badge"><div class="icon-bg"><i class="fas fa-house"></i></div><h4>Brookhaven</h4></div>
+                <div class="game-badge"><div class="icon-bg"><i class="fas fa-tree"></i></div><h4>Berry Avenue</h4></div>
+                <div class="game-badge"><div class="icon-bg"><i class="fas fa-lock"></i></div><h4>Piggy</h4></div>
+                <div class="game-badge"><div class="icon-bg"><i class="fas fa-apple-alt"></i></div><h4>Garden Horizons</h4></div>
+                <div class="game-badge"><div class="icon-bg"><i class="fas fa-tractor"></i></div><h4>Grow A Garden</h4></div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="btn-primary"><i class="fas fa-gamepad"></i> View All Supported Games</button>
+            </div>
+
+            <!-- SUPPORT US SECTION -->
+            <div class="support-section">
+                <h3 class="support-title">Support Us</h3>
+                <p class="support-subtext">buy roblox shirt to support tiger x work</p>
+                <button class="btn-buy" onclick="copyAndOpen('roblox')">
+                    <i class="fas fa-shopping-cart"></i> BUY
+                </button>
+            </div>
+
+            <!-- SOCIAL CIRCLES SECTION - Only YouTube and Discord -->
+            <div class="social-section">
+                <div class="social-circles">
+                    <!-- YouTube Circle -->
+                    <div class="social-circle" onclick="copyAndOpen('youtube')">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <!-- Discord Circle -->
+                    <div class="social-circle" onclick="copyAndOpen('discord')">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 2rem;">
+            <div>
+                <div style="display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1rem;">
+                    <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/-/refs/heads/main/Picsart_25-01-20_15-47-05-044.jpg" 
+                         alt="Tiger X Footer Logo" 
+                         class="footer-logo-image">
+                    <span style="font-weight: 700; font-size: 1.2rem; color: var(--green-exact);">Tiger X</span>
+                </div>
+                <p style="color: var(--green-exact); opacity: 0.8; font-size: 0.9rem;">The ultimate Roblox universal script hub trusted by thousands.</p>
+            </div>
+            <div><h4 style="margin-bottom: 1rem; color: var(--green-exact);">Quick Links</h4><ul style="list-style: none; color: var(--green-exact); opacity: 0.9;"><li>Features</li><li>Supported Games</li><li>Community</li><li>Premium</li></ul></div>
+            <div><h4 style="margin-bottom: 1rem; color: var(--green-exact);">Community</h4><ul style="list-style: none; color: var(--green-exact); opacity: 0.9;"><li>Discord Server</li><li>Documentation</li><li>Support</li></ul></div>
+            <div><h4 style="margin-bottom: 1rem; color: var(--green-exact);">Legal</h4><ul style="list-style: none; color: var(--green-exact); opacity: 0.9;"><li>Terms of Service</li><li>Privacy Policy</li><li>DMCA</li></ul></div>
+        </div>
+        <hr>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <span style="color: var(--green-exact); opacity: 0.8;">© 2026 Tiger X. All rights reserved.</span>
+            <span style="color: var(--green-exact);"></span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const toggleBtn = document.getElementById('dropdownToggle');
+    const menu = document.getElementById('dropdownMenu');
+
+    toggleBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        menu.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function(event) {
+        if (!toggleBtn.contains(event.target) && !menu.contains(event.target)) {
+            menu.classList.remove('show');
+        }
+    });
+
+    // Updated function to handle different copy links
+    function copyAndOpen(type) {
+        let link = "";
+        
+        if (type === 'roblox') {
+            link = "https://www.roblox.com/catalog/12349077059/Gaming-Shirt";
+        } else if (type === 'discord') {
+            link = "https://discord.gg/AGfKty2jsq";
+        } else if (type === 'youtube') {
+            link = "https://m.youtube.com/@BananaBalintYT";
+        }
+        
+        // Copy to clipboard
+        navigator.clipboard.writeText(link).then(() => {
+            // Open in new tab
+            window.open(link, '_blank');
+        }).catch(() => {
+            // Fallback if clipboard fails
+            prompt("Copy this link manually:", link);
+            window.open(link, '_blank');
+        });
+    }
+</script>
+</body>
+</html>
